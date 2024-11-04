@@ -1,16 +1,20 @@
 console.log("hello world");
 
-function gameboard() {
+const gameboard = (function () {
   let gameboardArray = [
     [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0],
   ];
   console.log(gameboardArray);
+})();
+
+function playerX() {
+  let character = "x";
 }
 
-function playerX() {}
-
-function playerO() {}
+function playerO() {
+  let character = "x";
+}
 
 gameboard();
