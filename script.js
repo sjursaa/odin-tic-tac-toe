@@ -10,11 +10,11 @@ const gameboard = (function () {
 })();
 
 function playerX() {
-  let character = "x";
+  let character = "X";
 }
 
 function playerO() {
-  let character = "x";
+  let character = "O";
 }
 
 gameboard();
