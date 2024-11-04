@@ -15,8 +15,13 @@ const gameboard = (function () {
       [0, 0, 0],
     ]);
   const update = (character, positionX, positionY) =>
-    (gameboardArray[positionX][positionY] = character);
-  const display = () => console.log(gameboardArray);
+    (gameboardArray[positionY][positionX] = character);
+  const display = () => {
+    // done this way, for readability
+    console.log(gameboardArray[0]);
+    console.log(gameboardArray[1]);
+    console.log(gameboardArray[2]);
+  };
   return { create, update, display };
 })();
 
@@ -30,11 +35,26 @@ function playerO() {
 }
 
 function game() {
-  // let currentTurn = playerX.character;
-  // console.log(playerX.character);
+  // init gameboard
   gameboard.create();
+  // turn 1 playerX
   gameboard.update("X", 0, 0);
   gameboard.display();
+  // turn 1 playerO
+  gameboard.update("O", 1, 1);
+  gameboard.display();
+  // turn 2 playerX
+  gameboard.update("X", 1, 0);
+  gameboard.display();
+  // turn 2 playerO
+  gameboard.update("O", 2, 1);
+  gameboard.display();
+  // // turn 3 playerX
+  gameboard.update("X", 2, 0);
+  gameboard.display();
+  // // turn 3 playerO
+  // gameboard.update("O", 1, 1);
+  // gameboard.display();
 }
 
 // gameboard();
