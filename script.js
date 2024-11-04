@@ -1,13 +1,6 @@
 console.log("hello world");
 
 const gameboard = (function () {
-  // let gameboardArray = [
-  //   [0, 0, 0],
-  //   [0, 0, 0],
-  //   [0, 0, 0],
-  // ];
-  // console.log(gameboardArray);
-  // create = [[0, 0, 0]]
   const create = () =>
     (gameboardArray = [
       [0, 0, 0],
