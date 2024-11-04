@@ -28,12 +28,10 @@ function player(name) {
 }
 
 function game() {
-  // init gameboard
+  // init gameboard & players
   gameboard.create();
   playerX = player("X");
   playerO = player("O");
-  console.log(playerX);
-  console.log(playerO);
 
   // turn 1 playerX
   gameboard.update(playerX.character, 0, 0);
