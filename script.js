@@ -52,6 +52,7 @@ function game() {
   // // turn 3 playerX
   gameboard.update("X", 2, 0);
   gameboard.display();
+  console.log("Player X wins");
   // // turn 3 playerO
   // gameboard.update("O", 1, 1);
   // gameboard.display();
