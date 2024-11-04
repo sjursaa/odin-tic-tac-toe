@@ -7,8 +7,11 @@ const gameboard = (function () {
       [0, 0, 0],
       [0, 0, 0],
     ]);
-  const update = (character, positionX, positionY) =>
-    (gameboardArray[positionY][positionX] = character);
+  const update = (character, posX, posY) => {
+    if (gameboardArray[posY][posX] == 0) {
+      gameboardArray[posY][posX] = character;
+    } else console.log("square is already filled");
+  };
   const display = () => {
     // done this way, for readability
     console.log(gameboardArray[0]);
@@ -18,26 +21,28 @@ const gameboard = (function () {
   return { create, update, display };
 })();
 
-function playerX() {
-  let character = "X";
+function player(name) {
+  const character = name;
   let squaresOccupied = 0;
-}
-
-function playerO() {
-  let character = "O";
+  return { character };
 }
 
 function game() {
   // init gameboard
   gameboard.create();
+  playerX = player("X");
+  playerO = player("O");
+  console.log(playerX);
+  console.log(playerO);
+
   // turn 1 playerX
-  gameboard.update("X", 0, 0);
+  gameboard.update(playerX.character, 0, 0);
   gameboard.display();
   // turn 1 playerO
-  gameboard.update("O", 1, 1);
+  gameboard.update(playerO.character, 1, 1);
   gameboard.display();
   // turn 2 playerX
-  gameboard.update("X", 1, 0);
+  gameboard.update("X", 0, 0);
   gameboard.display();
   // turn 2 playerO
   gameboard.update("O", 2, 1);
