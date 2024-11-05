@@ -73,4 +73,10 @@ function game() {
 }
 
 // gameboard();
-game();
+
+const button = document.querySelector(".start-button");
+button.onclick = () => {
+  game();
+};
+
+// game();
