@@ -10,7 +10,8 @@ const gameboard = (function () {
   const update = (character, posX, posY) => {
     if (gameboardArray[posY][posX] == 0) {
       gameboardArray[posY][posX] = character;
-    } else console.log("square is already filled");
+      return "OK";
+    } else return "square is already filled";
   };
   const display = () => {
     // done this way, for readability
@@ -36,31 +37,39 @@ function game() {
   // turn 1 playerX
   let round = 0;
   while (round < 4) {
+    let message = "no";
     console.log("player1 turn");
-    gameboard.update(player1.character, 0, 0);
-    gameboard.display();
+
+    while (message != "OK") {
+      let posX = prompt("numberX: p1");
+      let posY = prompt("numberY: p1");
+      message = gameboard.update(player1.character, posX, posY);
+      console.log(message);
+      gameboard.display();
+    }
+
+    message = "player2";
 
     console.log("player2 turn");
-    gameboard.update(player2.character, 1, 1);
-    gameboard.display();
+    while (message != "OK") {
+      let posX = prompt("numberX: p2");
+      let posY = prompt("numberY: p2");
+      message = gameboard.update(player2.character, posX, posY);
+      console.log(message);
+      gameboard.display();
+    }
 
     console.log("round: " + round);
     round++;
   }
 
   // final round
-  console.log("player1 turn");
-  gameboard.update(player1.character, 0, 0);
+  console.log("final move: ");
+  let posX = prompt("numberX: p1");
+  let posY = prompt("numberY: p1");
+  message = gameboard.update(player1.character, posX, posY);
+  console.log(message);
   gameboard.display();
-  // // turn 2 playerX
-  // gameboard.update("X", 0, 0);
-  // gameboard.display();
-  // // turn 2 playerO
-  // gameboard.update("O", 2, 1);
-  // gameboard.display();
-  // // // turn 3 playerX
-  // gameboard.update("X", 2, 0);
-  // gameboard.display();
 }
 
 // gameboard();
