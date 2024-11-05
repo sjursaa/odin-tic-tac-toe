@@ -47,6 +47,11 @@ function game() {
     console.log("round: " + round);
     round++;
   }
+
+  // final round
+  console.log("player1 turn");
+  gameboard.update(player1.character, 0, 0);
+  gameboard.display();
   // // turn 2 playerX
   // gameboard.update("X", 0, 0);
   // gameboard.display();
