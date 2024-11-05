@@ -34,23 +34,27 @@ function game() {
   playerO = player("O");
 
   // turn 1 playerX
-  gameboard.update(playerX.character, 0, 0);
-  gameboard.display();
-  // turn 1 playerO
-  gameboard.update(playerO.character, 1, 1);
-  gameboard.display();
-  // turn 2 playerX
-  gameboard.update("X", 0, 0);
-  gameboard.display();
-  // turn 2 playerO
-  gameboard.update("O", 2, 1);
-  gameboard.display();
-  // // turn 3 playerX
-  gameboard.update("X", 2, 0);
-  gameboard.display();
-  console.log("Player X wins");
-  // // turn 3 playerO
-  // gameboard.update("O", 1, 1);
+  let round = 0;
+  while (round < 4) {
+    console.log("playerX turn");
+    gameboard.update(playerX.character, 0, 0);
+    gameboard.display();
+
+    console.log("playerO turn");
+    gameboard.update(playerO.character, 1, 1);
+    gameboard.display();
+
+    console.log("round: " + round);
+    round++;
+  }
+  // // turn 2 playerX
+  // gameboard.update("X", 0, 0);
+  // gameboard.display();
+  // // turn 2 playerO
+  // gameboard.update("O", 2, 1);
+  // gameboard.display();
+  // // // turn 3 playerX
+  // gameboard.update("X", 2, 0);
   // gameboard.display();
 }
 
