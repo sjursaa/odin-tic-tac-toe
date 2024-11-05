@@ -30,18 +30,18 @@ function player(name) {
 function game() {
   // init gameboard & players
   gameboard.create();
-  playerX = player("X");
-  playerO = player("O");
+  player1 = player("X");
+  player2 = player("O");
 
   // turn 1 playerX
   let round = 0;
   while (round < 4) {
-    console.log("playerX turn");
-    gameboard.update(playerX.character, 0, 0);
+    console.log("player1 turn");
+    gameboard.update(player1.character, 0, 0);
     gameboard.display();
 
-    console.log("playerO turn");
-    gameboard.update(playerO.character, 1, 1);
+    console.log("player2 turn");
+    gameboard.update(player2.character, 1, 1);
     gameboard.display();
 
     console.log("round: " + round);
