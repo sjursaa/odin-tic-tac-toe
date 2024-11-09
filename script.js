@@ -8,7 +8,6 @@ const gameboard = (function () {
   const update = (character, posX, posY) => {
     if (gameboardArray[posY][posX] == 0) {
       gameboardArray[posY][posX] = character;
-      // TODO: check for all possible winning combinations
       if (
         gameboardArray[0][0] == character &&
         gameboardArray[0][1] == character &&
@@ -90,6 +89,7 @@ function game() {
   player1 = player("X");
   player2 = player("O");
 
+  const text = document.querySelector("h1");
   // turn 1 playerX
   let round = 0;
   let gameActive = true;
@@ -102,6 +102,7 @@ function game() {
       let posY = prompt("numberY: p1");
       message = gameboard.update(player1.character, posX, posY);
       if (message == "Won") {
+        text.innerText = "Player 1 wins, press button to start again";
         console.log("Player1: won");
         gameboard.display();
         gameActive = false;
@@ -119,6 +120,7 @@ function game() {
       message = gameboard.update(player2.character, posX, posY);
       if (message == "Won") {
         console.log("Player2: won");
+        text.innerText = "Player 2 wins, press button to start again";
         gameboard.display();
         gameActive = false;
       }
