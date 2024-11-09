@@ -51,6 +51,20 @@ const gameboard = (function () {
       ) {
         console.log("Won: right column from gameboard");
         return "Won";
+      } else if (
+        gameboardArray[0][0] == character &&
+        gameboardArray[1][1] == character &&
+        gameboardArray[2][2] == character
+      ) {
+        console.log("Won: top left to bottom right diagonal from gameboard");
+        return "Won";
+      } else if (
+        gameboardArray[2][0] == character &&
+        gameboardArray[1][1] == character &&
+        gameboardArray[0][2] == character
+      ) {
+        console.log("Won: bottom left to top right diagonal from gameboard");
+        return "Won";
       }
       return "OK";
     } else return "square is already filled";
