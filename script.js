@@ -10,6 +10,14 @@ const gameboard = (function () {
   const update = (character, posX, posY) => {
     if (gameboardArray[posY][posX] == 0) {
       gameboardArray[posY][posX] = character;
+      if (
+        gameboardArray[0][0] == character &&
+        gameboardArray[0][1] == character &&
+        gameboardArray[0][2] == character
+      ) {
+        console.log("Won: from gameboard");
+        return "Won";
+      }
       return "OK";
     } else return "square is already filled";
   };
@@ -36,14 +44,22 @@ function game() {
 
   // turn 1 playerX
   let round = 0;
-  while (round < 4) {
+  let gameActive = true;
+  while (gameActive === true) {
     let message = "no";
     console.log("player1 turn");
 
-    while (message != "OK") {
+    // TODO: fix bug: stuck here if message != OK
+    while (message !== "OK" && gameActive === true) {
+      console.log(gameActive);
       let posX = prompt("numberX: p1");
       let posY = prompt("numberY: p1");
       message = gameboard.update(player1.character, posX, posY);
+      if (message == "Won") {
+        console.log("player1: won");
+        gameboard.display();
+        gameActive = false;
+      }
       console.log(message);
       gameboard.display();
     }
@@ -51,7 +67,7 @@ function game() {
     message = "player2";
 
     console.log("player2 turn");
-    while (message != "OK") {
+    while (message !== "OK" && gameActive === true) {
       let posX = prompt("numberX: p2");
       let posY = prompt("numberY: p2");
       message = gameboard.update(player2.character, posX, posY);
@@ -64,12 +80,16 @@ function game() {
   }
 
   // final round
-  console.log("final move: ");
-  let posX = prompt("numberX: p1");
-  let posY = prompt("numberY: p1");
-  message = gameboard.update(player1.character, posX, posY);
-  console.log(message);
-  gameboard.display();
+  // TODO: remove this (excessive)
+  if (gameActive === true) {
+    console.log("final move: ");
+    let posX = prompt("numberX: p1");
+    let posY = prompt("numberY: p1");
+    message = gameboard.update(player1.character, posX, posY);
+    console.log(message);
+    gameboard.display();
+  }
+  console.log("game over");
 }
 
 // gameboard();
