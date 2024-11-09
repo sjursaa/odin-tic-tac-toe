@@ -1,5 +1,3 @@
-console.log("hello world");
-
 const gameboard = (function () {
   const create = () =>
     (gameboardArray = [
@@ -10,12 +8,48 @@ const gameboard = (function () {
   const update = (character, posX, posY) => {
     if (gameboardArray[posY][posX] == 0) {
       gameboardArray[posY][posX] = character;
+      // TODO: check for all possible winning combinations
       if (
         gameboardArray[0][0] == character &&
         gameboardArray[0][1] == character &&
         gameboardArray[0][2] == character
       ) {
-        console.log("Won: from gameboard");
+        console.log("Won: top row from gameboard");
+        return "Won";
+      } else if (
+        gameboardArray[1][0] == character &&
+        gameboardArray[1][1] == character &&
+        gameboardArray[1][2] == character
+      ) {
+        console.log("Won: middle row from gameboard");
+        return "Won";
+      } else if (
+        gameboardArray[2][0] == character &&
+        gameboardArray[2][1] == character &&
+        gameboardArray[2][2] == character
+      ) {
+        console.log("Won: bottom row from gameboard");
+        return "Won";
+      } else if (
+        gameboardArray[0][0] == character &&
+        gameboardArray[1][0] == character &&
+        gameboardArray[2][0] == character
+      ) {
+        console.log("Won: left column from gameboard");
+        return "Won";
+      } else if (
+        gameboardArray[0][1] == character &&
+        gameboardArray[1][1] == character &&
+        gameboardArray[2][1] == character
+      ) {
+        console.log("Won: middle column from gameboard");
+        return "Won";
+      } else if (
+        gameboardArray[0][2] == character &&
+        gameboardArray[1][2] == character &&
+        gameboardArray[2][2] == character
+      ) {
+        console.log("Won: right column from gameboard");
         return "Won";
       }
       return "OK";
