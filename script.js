@@ -47,16 +47,14 @@ function game() {
   let gameActive = true;
   while (gameActive === true) {
     let message = "no";
-    console.log("player1 turn");
 
-    // TODO: fix bug: stuck here if message != OK
     while (message !== "OK" && gameActive === true) {
-      console.log(gameActive);
+      console.log("player1 turn");
       let posX = prompt("numberX: p1");
       let posY = prompt("numberY: p1");
       message = gameboard.update(player1.character, posX, posY);
       if (message == "Won") {
-        console.log("player1: won");
+        console.log("Player1: won");
         gameboard.display();
         gameActive = false;
       }
@@ -66,28 +64,22 @@ function game() {
 
     message = "player2";
 
-    console.log("player2 turn");
     while (message !== "OK" && gameActive === true) {
+      console.log("player2 turn");
       let posX = prompt("numberX: p2");
       let posY = prompt("numberY: p2");
       message = gameboard.update(player2.character, posX, posY);
+      if (message == "Won") {
+        console.log("Player2: won");
+        gameboard.display();
+        gameActive = false;
+      }
       console.log(message);
       gameboard.display();
     }
 
     console.log("round: " + round);
     round++;
-  }
-
-  // final round
-  // TODO: remove this (excessive)
-  if (gameActive === true) {
-    console.log("final move: ");
-    let posX = prompt("numberX: p1");
-    let posY = prompt("numberY: p1");
-    message = gameboard.update(player1.character, posX, posY);
-    console.log(message);
-    gameboard.display();
   }
   console.log("game over");
 }
