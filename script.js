@@ -93,6 +93,7 @@ function player(name) {
 function game() {
   // init gameboard & players
   gameboard.create();
+  // TODO: move out of function in order make scorekeeping work
   let player1 = player("X");
   let player2 = player("O");
 
@@ -143,7 +144,22 @@ function game() {
   console.log("game over");
 }
 
+// TODO: Render gameboard on every round completion
+function displayController() {
+  const gameboardContainer = document.querySelector(".gameboard-container");
+  // gameboardContainer.setAttribute("display", "grid");
+  for (let i = 0; i < 3; i++) {
+    // lineshift
+    for (let j = 0; j < 3; j++) {
+      const button = document.createElement("button");
+      button.textContent = "hello";
+      gameboardContainer.appendChild(button);
+    }
+  }
+}
+
 // gameboard();
+displayController();
 
 const button = document.querySelector(".start-button");
 button.onclick = () => {
