@@ -1,3 +1,4 @@
+//#region gameboard
 const gameboard = (function () {
   const create = () =>
     (gameboardArray = [
@@ -76,18 +77,24 @@ const gameboard = (function () {
   };
   return { create, update, display };
 })();
+//#endregion
 
 function player(name) {
   const character = name;
-  let squaresOccupied = 0;
+  // let gamesWon = 0;
+  // const wonGame = () => {
+  //   gamesWon++;
+  //   console.log(gamesWon);
+  //   return gamesWon;
+  // };
   return { character };
 }
 
 function game() {
   // init gameboard & players
   gameboard.create();
-  player1 = player("X");
-  player2 = player("O");
+  let player1 = player("X");
+  let player2 = player("O");
 
   const text = document.querySelector("h1");
   // turn 1 playerX
@@ -104,6 +111,7 @@ function game() {
       if (message == "Won") {
         text.innerText = "Player 1 wins, press button to start again";
         console.log("Player1: won");
+        player.wonGame();
         gameboard.display();
         gameActive = false;
       }
