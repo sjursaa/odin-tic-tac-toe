@@ -81,13 +81,13 @@ const gameboard = (function () {
 
 function player(name) {
   const character = name;
-  // let gamesWon = 0;
-  // const wonGame = () => {
-  //   gamesWon++;
-  //   console.log(gamesWon);
-  //   return gamesWon;
-  // };
-  return { character };
+  let gamesWon = 0;
+  const getScore = () => gamesWon;
+  const updateScore = () => {
+    gamesWon++;
+    console.log(gamesWon);
+  };
+  return { character, getScore, updateScore };
 }
 
 function game() {
@@ -111,7 +111,8 @@ function game() {
       if (message == "Won") {
         text.innerText = "Player 1 wins, press button to start again";
         console.log("Player1: won");
-        player.wonGame();
+        player1.updateScore();
+        player1.getScore();
         gameboard.display();
         gameActive = false;
       }
