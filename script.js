@@ -148,18 +148,28 @@ function game() {
 
 // TODO: Render gameboard on every round completion
 function displayController() {
+  let posY = 0;
   const gameboardContainer = document.querySelector(".gameboard-container");
   let locGameboard = gameboard.display();
   locGameboard.forEach((array) => {
+    let posX = 0;
     array.forEach((element) => {
       const button = document.createElement("button");
       button.textContent = element;
+      button.setAttribute("posX", posX);
+      button.setAttribute("posY", posY);
       gameboardContainer.appendChild(button);
+      posX++;
       // TODO: create click event for buttons
       button.onclick = () => {
         console.log("button clicked");
+        // console.log(indexOf(array));
+        // console.log(indexOf(element));
+        console.log(button.getAttribute("posX"));
+        console.log(button.getAttribute("posY"));
       };
     });
+    posY++;
   });
 }
 
