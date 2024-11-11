@@ -156,6 +156,9 @@ function displayController() {
     array.forEach((element) => {
       const button = document.createElement("button");
       button.textContent = element;
+      if (element === 0) {
+        button.textContent = "";
+      }
       button.setAttribute("posX", posX);
       button.setAttribute("posY", posY);
       gameboardContainer.appendChild(button);
