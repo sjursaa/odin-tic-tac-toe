@@ -146,7 +146,6 @@ function game() {
   console.log("game over");
 }
 
-// TODO: Render gameboard on every round completion
 function displayController() {
   let posY = 0;
   const gameboardContainer = document.querySelector(".gameboard-container");
@@ -163,7 +162,6 @@ function displayController() {
       button.setAttribute("posY", posY);
       gameboardContainer.appendChild(button);
       posX++;
-      // TODO: create click event for buttons
       button.onclick = () => {
         console.log("button clicked");
         // console.log(indexOf(array));
@@ -171,6 +169,7 @@ function displayController() {
         console.log(button.getAttribute("posX"));
         console.log(button.getAttribute("posY"));
         gameboard.update(
+          // TODO: replace hardcoded X with current player
           "X",
           button.getAttribute("posX"),
           button.getAttribute("posY"),
