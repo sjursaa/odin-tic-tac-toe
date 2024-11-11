@@ -167,6 +167,13 @@ function displayController() {
         // console.log(indexOf(element));
         console.log(button.getAttribute("posX"));
         console.log(button.getAttribute("posY"));
+        gameboard.update(
+          "X",
+          button.getAttribute("posX"),
+          button.getAttribute("posY"),
+        );
+        gameboardContainer.replaceChildren();
+        displayController();
       };
     });
     posY++;
