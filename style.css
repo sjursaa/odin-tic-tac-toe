@@ -5,4 +5,12 @@ h1 {
 .gameboard-container {
   display: grid;
   grid-template-columns: auto auto auto;
+  justify-content: center;
+}
+
+.gameboard-container button {
+  /* size: 50px; */
+  height: 100px;
+  width: 100px;
+  font-size: 2em;
 }
