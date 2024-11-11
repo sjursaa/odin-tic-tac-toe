@@ -1,11 +1,11 @@
 //#region gameboard
-const gameboard = (function () {
+const gameboard = (function() {
   const create = () =>
-    (gameboardArray = [
-      [0, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
-    ]);
+  (gameboardArray = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+  ]);
   const update = (character, posX, posY) => {
     if (gameboardArray[posY][posX] == 0) {
       gameboardArray[posY][posX] = character;
@@ -74,6 +74,7 @@ const gameboard = (function () {
     console.log(gameboardArray[0]);
     console.log(gameboardArray[1]);
     console.log(gameboardArray[2]);
+    return gameboardArray;
   };
   return { create, update, display };
 })();
@@ -92,7 +93,7 @@ function player(name) {
 
 function game() {
   // init gameboard & players
-  gameboard.create();
+  // gameboard.create();
   // TODO: move out of function in order make scorekeeping work
   let player1 = player("X");
   let player2 = player("O");
@@ -140,6 +141,7 @@ function game() {
 
     console.log("round: " + round);
     round++;
+    // displayController();
   }
   console.log("game over");
 }
@@ -147,23 +149,29 @@ function game() {
 // TODO: Render gameboard on every round completion
 function displayController() {
   const gameboardContainer = document.querySelector(".gameboard-container");
-  // gameboardContainer.setAttribute("display", "grid");
-  for (let i = 0; i < 3; i++) {
-    // lineshift
-    for (let j = 0; j < 3; j++) {
+  let locGameboard = gameboard.display();
+  locGameboard.forEach((array) => {
+    array.forEach((element) => {
       const button = document.createElement("button");
-      button.textContent = "hello";
+      button.textContent = element;
       gameboardContainer.appendChild(button);
-    }
-  }
+      // TODO: create click event for buttons
+      button.onclick = () => {
+        console.log("button clicked");
+      };
+    });
+  });
 }
 
 // gameboard();
+// displayController();
+gameboard.create();
 displayController();
 
 const button = document.querySelector(".start-button");
 button.onclick = () => {
   game();
+  // displayController();
 };
 
 // game();
