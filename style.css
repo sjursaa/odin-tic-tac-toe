@@ -1,3 +1,8 @@
 h1 {
   color: blue;
 }
+
+.gameboard-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
